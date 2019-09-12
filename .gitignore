@@ -24,6 +24,12 @@
 *.sts4-cache
 target/*
 target/*.*
+*.mvn.*
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/.mvn/wrapper/MavenWrapperDownloader.java
+/.mvn/wrapper/maven-wrapper.properties
+/HELP.md
+/mvnw
+/mvnw.cmd
