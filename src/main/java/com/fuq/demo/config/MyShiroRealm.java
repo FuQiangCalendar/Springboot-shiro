@@ -10,10 +10,11 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
-import com.fuq.demo.dto.SysPermission;
-import com.fuq.demo.dto.SysRole;
-import com.fuq.demo.dto.UserInfo;
 import com.fuq.demo.service.system.UserInfoService;
+import com.fuq.demo.tool.dto.SysPermission;
+import com.fuq.demo.tool.dto.SysRole;
+import com.fuq.demo.tool.dto.UserInfo;
+import com.fuq.demo.tool.redis.RedisUtil;
 
 import javax.annotation.Resource;
 
@@ -49,6 +50,9 @@ public class MyShiroRealm extends AuthorizingRealm {
         if(userInfo == null){
             return null;
         }
+//        //存入redis缓存中
+//        RedisUtil.hset(RedisUtil.AUTH, username, userInfo);
+        
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
                 userInfo, //用户名
                 userInfo.getPassword(), //密码

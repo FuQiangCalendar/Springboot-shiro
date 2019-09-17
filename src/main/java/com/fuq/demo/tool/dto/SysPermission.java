@@ -1,4 +1,4 @@
-package com.fuq.demo.dto;
+package com.fuq.demo.tool.dto;
 
 import java.io.Serializable;
 import java.util.List;
@@ -20,6 +20,10 @@ import lombok.Setter;
 @Entity
 @Table(name = "sys_permission")
 public class SysPermission implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private Integer id;//主键.

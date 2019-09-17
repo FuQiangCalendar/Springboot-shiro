@@ -1,4 +1,4 @@
-package com.fuq.demo.dto;
+package com.fuq.demo.tool.dto;
 
 import java.util.List;
 

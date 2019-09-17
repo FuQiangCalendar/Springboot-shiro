@@ -1,6 +1,6 @@
 package com.fuq.demo.service.system;
 
-import com.fuq.demo.dto.UserInfo;
+import com.fuq.demo.tool.dto.UserInfo;
 
 public interface UserInfoService {
 	

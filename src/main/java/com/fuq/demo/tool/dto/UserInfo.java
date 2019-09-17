@@ -1,4 +1,4 @@
-package com.fuq.demo.dto;
+package com.fuq.demo.tool.dto;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,12 +13,20 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fuq.demo.tool.PasswordUtil;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
 @Getter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder(toBuilder = true)
 @Table(name = "user_info")
 public class UserInfo implements Serializable {
 	/**
@@ -51,7 +59,7 @@ public class UserInfo implements Serializable {
      * @return
      */
     public String getCredentialsSalt(){
-        return this.username+this.salt;
+        return PasswordUtil.Salt;
     }
     //重新对盐重新进行了定义，用户名+salt，这样就更加不容易被破解
 }

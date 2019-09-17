@@ -4,9 +4,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.fuq.demo.dto.UserInfo;
 import com.fuq.demo.mapper.system.UserInfoDao;
 import com.fuq.demo.service.system.UserInfoService;
+import com.fuq.demo.tool.dto.UserInfo;
 
 @Service
 public class UserInfoServiceImpl implements UserInfoService {

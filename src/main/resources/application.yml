@@ -3,7 +3,31 @@ server:
     uri-encoding: utf-8
   port: 9006
 
+#  redis:
+#    host: 192.168.2.41                          # redis连接地址
+#    port: 6379                                   # 连接端口
+#    password: cnbisoft                         # 密码 
+#    timeout: 1000                                # 连接超时时间
+#    database: 2                                  # 指定连接库
+#    pool:                                        # redis连接池配置
+#      max-active: 10                             # 连接池最大连接数（使用负值表示没有限制）
+#      max-idle: 8                                # 连接池中的最大空闲连接
+#      min-idle: 2                                # 连接池中的最小空闲连接
+#      max-wait: -1                              # 连接池最大阻塞等待时间（使用负值表示没有限制）
+
 spring:
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  application:
+    name: projects-tjsp                           # 指定服务名称  SERVICE-CORE
+  session:                                          # session缓存
+    store-type: redis                               # 指定缓存方式
+    redis:
+      namespace: cnbi
+
   datasource:
     url: jdbc:mysql://192.168.64.11:3306/demo1?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
@@ -11,6 +35,28 @@ spring:
     #schema: database/import.sql
     #sql-script-encoding: utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
+#    # Hikari will use the above plus the following to setup connection pooling
+#    hikari:             #使用springboot官方推荐的  效率更高  --zhh
+#      minimum-idle: 5
+#      maximum-pool-size: 15
+#      auto-commit: true
+#      idle-timeout: 30000
+#      pool-name: brdb_cnbiHikariCP
+#      max-lifetime: 1800000
+#      connection-timeout: 30000
+#      connection-test-query: SELECT 1 from dual
+  redis:
+    host: 192.168.2.41                          # redis连接地址
+    port: 6379                                   # 连接端口
+    password: cnbisoft                         # 密码 
+    timeout: 1000                                # 连接超时时间
+    database: 3                                  # 指定连接库
+    jedis: 
+      pool:
+        max-active: 10                             # 连接池最大连接数（使用负值表示没有限制）
+        max-idle: 8                                # 连接池中的最大空闲连接
+        min-idle: 2                                # 连接池中的最小空闲连接
+        max-wait: -1                              # 连接池最大阻塞等待时间（使用负值表示没有限制）
 
   jpa:
     database: mysql
@@ -19,8 +65,8 @@ spring:
       ddl-auto: update
     properties:
        hibernate:
-          dialect: org.hibernate.dialect.MySQL5Dialect
-
+          dialect: org.hibernate.dialect.MySQL5Dialect   
+                 
   thymeleaf:
      cache: false
      mode: HTML
